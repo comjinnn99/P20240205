@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.jhin.prj.board.map.BoardMapper">
+  <select id="boardSelectList">
+    SELECT * FROM dev_board
+  </select>
+
+  <select id="boardSelect">
+    SELECT * FROM dev_board WHERE board_id = #{boardId}
+  </select>
+
+  <insert id="boardInsert"></insert>
+
+  <insert id="boardReplyInsert"></insert>
+
+  <update id="boardUpdate"></update>
+
+  <update id="boardReplyUpdate"></update>
+
+  <delete id="boardDelete"></delete>
+
+  <delete id="boardReplyDelete"></delete>
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.jhin.prj.notice.service.NoticeMapper">
+  <select id="noticeSelectList">
+    SELECT
+      notice_id,
+      notice_writer_name,
+      notice_title,
+      notice_date,
+      notice_hit,
+      notice_attach
+    FROM DEV_NOTICE
+    <if test='key == "all"'>WHERE 1=1</if>
+    <if test='key == "name"'>WHERE notice_writer_name LIKE CONCAT('%',#{val},'%')</if>
+    ORDER BY notice_id DESC
+  </select>
+  
+  <select id="noticeSelect">
+    SELECT * FROM DEV_NOTICE WHERE notice_id = #{noticeId}
+  </select>
+  
+  <insert id="noticeInsert">
+    <selectKey keyProperty="noticeId" order="BEFORE" resultType="int">
+      select 
+        case 
+          when max(notice_id) is null then 1
+          else max(notice_id) +1 
+        end
+      from dev_notice
+    </selectKey>
+    insert into dev_notice 
+      (notice_id,
+      notice_writer_id,
+      notice_writer_name,
+      notice_date,
+      notice_title,
+      notice_subject,
+      notice_attach,
+      notice_attach_path) 
+    values 
+      (#{noticeId}, #{noticeWriterId}, #{noticeWriterName},
+       #{noticeDate}, #{noticeTitle}, #{noticeSubject},
+       #{noticeAttach}, #{noticeAttachPath})
+  </insert>
+  
+  <update id="noticeUpdate"></update>
+  <delete id="noticeDelete"></delete>
+  <update id="noticeHitUpdate">
+    update dev_notice
+    set notice_hit = notice_hit + 1
+    where notice_id = #{noticeId}
+  </update>
+</mapper>
