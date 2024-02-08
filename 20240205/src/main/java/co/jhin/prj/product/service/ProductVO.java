@@ -11,4 +11,5 @@ public class ProductVO extends ProductStarVO {
 	private String productSubject;
 	private int productPrice;
 	private String productImg;
+	private String productState;
 }
