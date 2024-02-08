@@ -13,8 +13,12 @@
       <h1 class="display-2 text-dark mb-4 animated slideInDown">Acticle</h1>
       <nav aria-label="breadcrumb animated slideInDown">
         <ol class="breadcrumb justify-content-center mb-0">
-          <li class="breadcrumb-item"><a href="home">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Pages</a></li>
+          <li class="breadcrumb-item">
+            <a href="home">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="#">Pages</a>
+          </li>
           <li class="breadcrumb-item text-dark" aria-current="page">Acticle</li>
         </ol>
       </nav>
@@ -56,17 +60,40 @@
       </div>
     </div>
   </div>
+  <div class="container mt-3">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="javascript:void(0)" onclick="callFunction(${ p.firstPageNoOnPageList } - 1)">Previous</a>
+      </li>
+      <c:forEach var="index" begin="${ p.firstPageNoOnPageList }" end="${ p.lastPageNoOnPageList }" step="1">
+        <li class="page-item">
+          <a class="page-link" href="javascript:void(0);" onclick="callFunction(${index});">${ index }</a>
+        </li>
+      </c:forEach>
+      <li class="page-item">
+        <a class="page-link" href="javascript:void(0)" onclick="callFunction(${ p.lastPageNoOnPageList } + 1)">Next</a>
+      </li>
+    </ul>
+  </div>
   <div>
     <form id="frm" action="boardselect" method="post">
       <input type="hidden" id="boardId" name="boardId">
     </form>
+    <form id="pageFrm" action="boardlist" method="post">
+      <input type="hidden" id="currentPageNo" name="currentPageNo" />
+    </form>
   </div>
   <!-- board end -->
   <script type="text/javascript">
-			function boardSelect(id) {
-				document.getElementById("boardId").value = id;
-				frm.submit();
-			}
-		</script>
+		function boardSelect(id) {
+			document.getElementById("boardId").value = id;
+			frm.submit();
+		}
+		
+		function callFunction(page){
+			document.getElementById("currentPageNo").value = page;
+			pageFrm.submit();
+		}
+	</script>
 </body>
 </html>

@@ -2,8 +2,10 @@ package co.jhin.prj.board.service;
 
 import java.util.List;
 
+import co.jhin.prj.common.PageVO;
+
 public interface BoardService {
-	List<BoardVO> boardSelectList();
+	List<BoardVO> boardSelectList(int offset);
 
 	List<BoardVO> boardSelectList(BoardVO vo);	// 검색
 
@@ -21,4 +23,5 @@ public interface BoardService {
 
 	int boardReplyDelete(BoardReplyVO vo);
 	
+	PageVO selectCount();
 }
