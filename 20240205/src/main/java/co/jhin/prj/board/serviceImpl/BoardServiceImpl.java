@@ -10,6 +10,7 @@ import co.jhin.prj.board.map.BoardMapper;
 import co.jhin.prj.board.service.BoardReplyVO;
 import co.jhin.prj.board.service.BoardService;
 import co.jhin.prj.board.service.BoardVO;
+import co.jhin.prj.common.PageVO;
 
 @Service
 @Primary
@@ -18,8 +19,8 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper map;	// dao
 
 	@Override
-	public List<BoardVO> boardSelectList() {
-		return map.boardSelectList();
+	public List<BoardVO> boardSelectList(int offset) {
+		return map.boardSelectList(offset);
 	}
 
 	@Override
@@ -60,6 +61,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int boardReplyDelete(BoardReplyVO vo) {
 		return map.boardReplyDelete(vo);
+	}
+
+	@Override
+	public PageVO selectCount() {
+		return map.selectCount();
 	}
 
 }

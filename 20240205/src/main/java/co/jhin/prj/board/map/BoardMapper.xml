@@ -3,6 +3,8 @@
 <mapper namespace="co.jhin.prj.board.map.BoardMapper">
   <select id="boardSelectList">
     SELECT * FROM dev_board
+    order by board_id desc
+    limit #{offset}, 5
   </select>
 
   <select id="boardSelect">
@@ -20,4 +22,8 @@
   <delete id="boardDelete"></delete>
 
   <delete id="boardReplyDelete"></delete>
+
+  <select id="selectCount">
+    SELECT count(*) AS total_record_count FROM dev_board
+  </select>
 </mapper>

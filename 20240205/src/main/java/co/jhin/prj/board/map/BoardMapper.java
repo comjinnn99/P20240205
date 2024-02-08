@@ -4,9 +4,10 @@ import java.util.List;
 
 import co.jhin.prj.board.service.BoardReplyVO;
 import co.jhin.prj.board.service.BoardVO;
+import co.jhin.prj.common.PageVO;
 
 public interface BoardMapper {
-	List<BoardVO> boardSelectList();
+	List<BoardVO> boardSelectList(int offset);
 
 	List<BoardVO> boardSelectList(BoardVO vo);	// 검색
 
@@ -23,4 +24,6 @@ public interface BoardMapper {
 	int boardDelete(BoardVO vo);
 
 	int boardReplyDelete(BoardReplyVO vo);
+	
+	PageVO selectCount();
 }
