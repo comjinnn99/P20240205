@@ -1,5 +1,6 @@
 package co.jhin.prj.message.serviceImpl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +37,8 @@ public class MessageServiceImpl implements MessageService {
 		return map.messageDelete(vo);
 	}
 
+	@Override
+	public HashMap<String, Object> messageCount() {
+		return map.messageCount();
+	}
 }

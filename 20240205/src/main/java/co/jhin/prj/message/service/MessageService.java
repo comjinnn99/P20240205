@@ -1,5 +1,6 @@
 package co.jhin.prj.message.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface MessageService {
@@ -10,4 +11,6 @@ public interface MessageService {
 	int messageInsert(MessageVO vo);
 
 	int messageDelete(MessageVO vo);
+	
+	HashMap<String, Object> messageCount();
 }

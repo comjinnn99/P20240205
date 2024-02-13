@@ -18,11 +18,11 @@ public class AdminController {
 
 	@RequestMapping(value = "/adminpage", method = RequestMethod.GET)
 	public String adminPage(Model model, HttpSession session) {
-		// 필요한 작업을 여기서 기록
 		String author = (String) session.getAttribute("author");
 		String viewPage = null;
 
 		if (author != null && author.equals("admin")) {
+			model.addAttribute("c", ms.messageCount()); // c 변수는 Hashmap
 			model.addAttribute("messages", ms.messageSelectList());
 			viewPage = "admin/adminpage";
 		} else {
@@ -33,7 +33,7 @@ public class AdminController {
 		return viewPage;
 	}
 
-	@RequestMapping(value = "/messageselect", method = RequestMethod.POST)
+	@RequestMapping(value = "/messageselect", method = {RequestMethod.POST, RequestMethod.GET})
 	public String messageSelect(Model model, MessageVO vo) {
 		model.addAttribute("data", ms.messageSelect(vo));
 		return "admin/messageselect";
