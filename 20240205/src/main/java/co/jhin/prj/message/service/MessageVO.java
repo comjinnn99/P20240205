@@ -11,4 +11,5 @@ public class MessageVO {
 	private String messageWriterEmail;
 	private String messageTitle;
 	private String messageSubject;
+	private String messageYn;
 }

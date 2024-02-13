@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.jhin.prj.message.map.MessageMapper">
-  <select id="messageSelectList"></select>
+  <select id="messageSelectList">
+    SELECT * FROM dev_message ORDER BY message_id DESC
+  </select>
   
-  <select id="messageSelect"></select>
+  <select id="messageSelect">
+    select * from dev_message where message_id = #{messageId}
+  </select>
   
   <insert id="messageInsert">
     insert into dev_message 
