@@ -1,5 +1,7 @@
 package co.jhin.prj.admin.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +17,20 @@ public class AdminController {
 	private MessageService ms;
 
 	@RequestMapping(value = "/adminpage", method = RequestMethod.GET)
-	public String adminPage(Model model) {
+	public String adminPage(Model model, HttpSession session) {
 		// 필요한 작업을 여기서 기록
-		model.addAttribute("messages", ms.messageSelectList());
-		return "admin/adminpage";
+		String author = (String) session.getAttribute("author");
+		String viewPage = null;
+
+		if (author != null && author.equals("admin")) {
+			model.addAttribute("messages", ms.messageSelectList());
+			viewPage = "admin/adminpage";
+		} else {
+			model.addAttribute("message", "접근할 수 없는 페이지입니다.");
+			viewPage = "member/membermessage";
+		}
+
+		return viewPage;
 	}
 
 	@RequestMapping(value = "/messageselect", method = RequestMethod.POST)
