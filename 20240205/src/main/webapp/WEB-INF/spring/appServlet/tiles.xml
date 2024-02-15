@@ -25,6 +25,8 @@
   <definition name="admin/*/*" extends="myapp.admin">
     <put-attribute name="body" value="/WEB-INF/views/admin/{1}/{2}.jsp" />
   </definition>
+  <!-- no tiles -->
+  <definition name="notiles/*/*" template="/WEB-INF/views/{1}/{2}.jsp" />
   <!-- 해당 결과로 /WEB-INF/views/layout/userlayout.jsp 화면이 반환되며, 해당 화면에는 header, body, footer가 존재 -->
   <definition name="*/*" extends="myapp.homepage">
     <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
