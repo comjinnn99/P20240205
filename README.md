@@ -1,5 +1,5 @@
 # P20240205
-bootstrap 템플릿을 이용한 게시판 프로젝트
+bootstrap 템플릿을 이용한 Spring 실습 (게시판)
 
 tiles layout을 이용해 템플릿을 쪼개어 header, body, footer 등으로 설정해보는 연습
 
